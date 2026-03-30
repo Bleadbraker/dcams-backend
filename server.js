@@ -6,7 +6,11 @@ const { Pool } = require('pg'); // NEW: Using PostgreSQL instead of SQLite
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors());
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
 // 1. Connect to your Permanent Cloud Database
